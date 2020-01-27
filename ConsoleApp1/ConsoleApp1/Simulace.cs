@@ -8,7 +8,10 @@ namespace ConsoleApp1
 {
     public class Simulace
     {
-        public int CurrentTime;
+        public delegate void OnEventThatCurrentTimeIsEven(string msg);
+        public event OnEventThatCurrentTimeIsEven Lista;
+
+        public int CurrentTime { get; set; }
 
         public Simulace()
         {
@@ -19,9 +22,21 @@ namespace ConsoleApp1
         {
             while(CurrentTime < 10)
             {
-                Console.WriteLine(CurrentTime);
+                if ((CurrentTime % 2) == 0)  
+                {
+                    Console.WriteLine(CurrentTime);
+                    Lista("TII");
+                    //raiseEventCurrentTimeIsEven("Current Time is Even ");
+                }
+                System.Threading.Thread.Sleep(100);
                 CurrentTime++;
             }
         }
+
+        //public void raiseEventCurrentTimeIsEven(string msg)
+        //{
+        //    lista?.Invoke(msg);
+        //}
     }
 }
+ 

@@ -10,12 +10,12 @@ namespace ConsoleApp1
     {
         public void print(string msg)
         {
-            Console.WriteLine(msg);
+            Console.WriteLine(msg + "Object zero");
         }
 
         public MyObject(Simulace simulace)
         {
-
+            simulace.Lista += print;
         }
     }
 }
